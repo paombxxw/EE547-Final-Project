@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/home.css">
+    <title>Found Strays</title>
+</head>
+<body>
+    <header class="main-header">
+        <a href="/" class="button-like">Stray Library</a>
+    </header>
+    <div class="content">
+        <h1>Report Animals' Information</h1>
+        <p class="highlighted-text">Found stray animals? Please don't hesitate to upload the information!</p>
+    </div>
+    </ul>
+    <form action="http://localhost:3000/Found_Strays" method="post" enctype="multipart/form-data">
+        <input type="text" id="animal" name="animal" placeholder="What animal" /><br />
+        <input type="text" id="size" name="size" placeholder="What size(SML)" /><br />
+        <input type="text" id="color" name="color" placeholder="What color"  /><br />
+        <input type="text" id="city" name="city" placeholder="Which city" /><br />
+        <input type="text" id="detail" name="detail" placeholder="What's detailed address"  /><br />
+        <input type="text" id="zipcode" name="zipcode" placeholder="Zipcode" /><br />
+
+        <input type="file" id="picture" name="picture" /><br />
+        <input type="submit" value="Submit" />
+
+    </form>
+    
+</body>
+</html>

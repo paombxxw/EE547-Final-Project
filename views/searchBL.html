@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="/static/css/home.css">
+    <title>Search Information</title>
+
+</head>
+<body>
+    <header class="main-header">
+        <a href="/" class="button-like">Stray Library</a>
+        <a href="/reportBL" class="button-like">Upload</a>
+    </header>
+    <div class="content">
+        <h1>Pay attention!</h1>
+        <p class="highlighted-text">Wanna to know people in blacklist? Found them here!</p>
+        <p>You can check entire Blacklist by pressing search without typing anything.</p>
+        <ul>
+        <form id="search-form">
+            <input type="text" name="name" placeholder="Name" /><br />
+            <input type="text" name="gender" placeholder="Gender(F/M)" /><br />
+            <input type="text" name="haircolor" placeholder="Hair Color"  /><br />
+            <input type="text" name="eyecolor" placeholder="Eye Color" /><br />
+            <input type="text" name="skincolor" placeholder="Skin Color"  /><br />
+            <input type="text" name="height" placeholder="Height(in inch)" /><br />
+            <input type="text" name="weight" placeholder="Weight(in pounds)" /><br />
+            <input type="text" name="IDType" placeholder="IDType" /><br />
+            <input type="text" name="ID" placeholder="ID" /><br />   
+            <button type="submit">Search</button>
+        </form>
+    </div>
+    
+
+    <div id="search-results"></div>
+    
+    <script>
+        document.getElementById('search-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            const searchParams = new URLSearchParams(formData).toString();
+
+            fetch('/blacklist/search-results?' + searchParams)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    const resultsContainer = document.getElementById('search-results');
+                    // Clear previous results
+                    resultsContainer.innerHTML = ''; 
+
+                    if (data.length > 0) {
+                        // Create table
+                        const table = document.createElement('table');
+                        // Create header row
+                        const header = table.insertRow();
+                        const headers = ["Name", "Gender", "Hair Color", "Eye Color", "Skin Color", "Height", "Weight", "ID Type", "ID", "Reason"];
+                        headers.forEach(headerText => {
+                            const headerCell = document.createElement('th');
+                            headerCell.textContent = headerText;
+                            header.appendChild(headerCell);
+                        });
+
+                        // Fill in rows with data
+                        data.forEach(item => {
+                            const row = table.insertRow();
+                            headers.forEach(column => {
+                                const cell = row.insertCell();
+                                cell.textContent = item[column.toLowerCase().replace(/\s/g, '')] || ''; // Replace spaces and match data keys
+                            });
+                        });
+                        resultsContainer.appendChild(table);
+                    } else {
+                        resultsContainer.innerHTML = '<p>No results found.</p>';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    resultsContainer.innerHTML = '<p>Error loading results.</p>';
+                });
+        });
+
+
+    </script>
+
+
+
+</body>
+</html>

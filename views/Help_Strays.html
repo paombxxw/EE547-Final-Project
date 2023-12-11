@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/home.css">
+    <title>Help Strays</title>
+    <style>
+        /* 适应第二个页面的内容 */
+        .table-container {
+            width: 70%;
+            margin: 20px auto;
+            background-color: #fff; /* 添加背景色以提升可读性 */
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <a href="/" class="button-like">Stray Library</a>
+        <a href="/Found_Strays" class="button-like">Report Stray Animals</a>
+        <a href="/Map" class="button-like">Map</a>
+    </header>
+    <div class="content">
+        <h1>Help Strays</h1>
+        <p class="highlighted-text">Could you assist them? They would be very grateful for your help.</p>
+    </div>
+    <div class="table-container">
+        <table>
+            <tr>
+                <th>Picture</th>
+                <th>Animal</th>
+                <th>Size</th>
+                <th>Color</th>
+                <th>City</th>
+                <th>Detailed Address</th>
+                <th>Zipcode</th>
+            </tr>
+            <tr>
+                <td><img id="picture" src="" alt="Uploaded Picture" style="width: 30%;"></td>
+                <td id="animal"></td>
+                <td id="size"></td>
+                <td id="color"></td>
+                <td id="city"></td>
+                <td id="detail"></td>
+                <td id="zipcode"></td>
+            </tr>
+        </table>
+    </div>
+
+    <script src="/static/js/Client.js"></script>
+</body>
+
+
+</html>

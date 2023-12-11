@@ -1,0 +1,137 @@
+/* common.css */
+body {
+    font-family: 'Open Sans', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('../Image/bg_i.jpg');
+    background-size: cover;
+    color: #333; /* 更深的字体颜色以增强可读性 */
+    text-align: center;
+    line-height: 1.6; /* 增加行间距 */
+}
+
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: rgb(183, 183, 183);
+}
+
+.header-fixed, .header-dynamic {
+    display: flex;
+    align-items: center;
+}
+
+/* 额外的样式确保链接在右侧对齐 */
+.header-dynamic {
+    justify-content: flex-end;
+    flex-grow: 1; /* 让这个容器填充剩余空间 */
+}
+
+.header-fixed a {
+    color: #4CAF50; /* 统一链接颜色 */
+    padding: 8px 16px; /* 调整链接的内边距 */
+    border-radius: 4px; /* 轻微的圆角 */
+}
+
+.header-dynamic a {
+    color: #4CAF50; /* 统一链接颜色 */
+}
+
+.content h1 {
+    margin-bottom: -0.5em; /* 减少标题下方的空间 */
+    color: #4CAF50; /* 使用主题色 */
+    background-color: rgba(255, 255, 255, 0.8); /* 半透明背景增加可读性 */
+    display: inline-block; /* 使背景仅包围文字 */
+    padding: 0.5em 1em; /* 文字周围的空间 */
+    border-radius: 10px; /* 圆角 */
+}
+
+.content p {
+    padding: 0 20px; /* 文本的左右内边距 */
+}
+
+.content ul {
+    list-style: none; /* 移除列表前的符号 */
+    padding: 0;
+}
+
+.content ul li a {
+    display: inline-block;
+    margin: 10px;
+    color: white;
+    background-color: #4CAF50;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s; /* 平滑的背景色变换 */
+}
+
+.content ul li a:hover {
+    background-color: #367B3A;
+    text-decoration: none; /* 移除下划线 */
+}
+
+.button-like, button {
+    padding: 10px 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: 1px solid #4CAF50; /* 添加边框 */
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-decoration: none;
+    display: inline-block;
+    margin: 10px 0;
+    transition: all 0.3s; /* 平滑过渡所有变化 */
+}
+
+.button-like:hover, button:hover {
+    background-color: #367B3A;
+    border-color: #367B3A; /* 边框颜色也随之变化 */
+    text-decoration: none;
+}
+
+a.button-like {
+    padding: 10px 15px;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-left: 10px; /* 与其他链接/按钮间隔 */
+}
+
+a.button-like:hover {
+    background-color: #367B3A;
+}
+
+form {
+    margin-top: 20px;
+    display: inline-block;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+
+input {
+    display: block;
+    width: 400px;
+    margin: -5px auto -5px auto; /* 上边距为 20px，下边距为 10px，水平居中 */
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+textarea[name="reason"] {
+    width: 400px; /* 设置宽度为 300px */
+    height: 100px; /* 设置高度为 100px */
+}
+
+.highlighted-text {
+    font-size: 1.2em; /* 增大字体大小 */
+    text-align: center;
+    color: #333; /* 或者选择与页面风格相符的颜色 */
+    margin: 20px 0; /* 文本的上下边距 */
+}

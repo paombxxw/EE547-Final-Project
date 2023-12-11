@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Account Page</title>
+    <link rel="stylesheet" href="/static/css/home.css">
+</head>
+<body>
+    <header class="main-header">
+        <a href="/" class="button-like">Stray Library</a>
+    </header>
+    <div class="content">
+        <h1>Account Page</h1>
+    </div>
+
+    <div class="button-container-center">
+        <button id="logout-button">Logout</button><br>
+        <a href="/update-password" class="button-like">Change password</a><br>
+        <button id="try-delete-account">Delete Account</button>
+    </div>
+
+
+    <script>
+        document.getElementById('try-delete-account').addEventListener('click', function() {
+            fetch('/try-delete-account', {
+                method: 'POST',
+                headers: {
+                    'Authorization': 'Bearer ' + localStorage.getItem('token')
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Account deleted successfully');
+                alert('Account deleted');
+                localStorage.removeItem('token'); 
+                window.location.href = '/try-login.html'; 
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                alert('Failed to delete account.');
+            });
+        });
+    </script>
+</body>
+</html>

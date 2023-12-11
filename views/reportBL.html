@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="/static/css/home.css">
+    <title>Upload Stray Animals' Information</title>
+</head>
+<body>
+    <header class="main-header">
+        <a href="/" class="button-like">Stray Library</a>
+        <a href="/searchBL" class="button-like">Search</a>
+    </header>
+    <div class="content">
+        <h1>Upload Blacklist</h1>
+        <p class="highlighted-text">Anyone hurts animals around you? Report them soon!</p>
+        <ul>
+
+            <form action="/blacklist/report" method="post" enctype="multipart/form-data">
+            <input type="text" name="name" placeholder="Name" /><br />
+            <input type="text" name="gender" placeholder="Gender(F/M)" /><br />
+            <input type="text" name="haircolor" placeholder="Hair Color"  /><br />
+            <input type="text" name="eyecolor" placeholder="Eye Color" /><br />
+            <input type="text" name="skincolor" placeholder="Skin Color"  /><br />
+            <input type="text" name="height" placeholder="Height(in inch)" /><br />
+            <input type="text" name="weight" placeholder="Weight(in pounds)" /><br />
+            <input type="text" name="IDType" placeholder="IDType" /><br />
+            <input type="text" name="ID" placeholder="ID" /><br /> 
+            <textarea name="reason" placeholder="Reason(required)" required></textarea><br/>
+            <!-- <input type="file" name="picture" /><br /> -->
+            <input type="submit" value="Submit" />
+    
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.querySelector('form');
+            form.addEventListener('submit', function(e) {
+                e.preventDefault(); 
+
+                const formData = new FormData(form);
+
+                fetch('/blacklist/report', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    alert('Thanks for your attention, we have added this peroson in the blacklist.');
+                    window.location.href = '/';
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Upload failed.');
+                });
+            });
+        });
+    </script>
+
+</body>
+
+</html>

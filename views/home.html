@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stray Library</title>
+    <link rel="stylesheet" href="/static/css/home.css">
+</head>
+<body>
+    
+    <header class="main-header">
+        <a href="/" class="button-like">Stray Library</a>
+        <div class="header-dynamic">
+            <!-- Content added dynamically -->
+        </div>
+    </header>
+    
+    <div class="content">
+        <h1>Welcome to Stray Library</h1>
+        <p class="highlighted-text">Here you can find a friend who will be grateful for your help!</p>
+        <ul>
+            <li><a href="/Animal_Adoption" class="button-like">Animal Adoption</a></li>
+            <li><a href="/Found_Strays" class="button-like">Found Strays</a></li>
+            <li><a href="/searchBL" class="button-like">Blacklist</a></li>
+            <div class="show_help">
+                <!-- Content added dynamically -->
+            </div>
+        </ul>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const dynamicHeader = document.querySelector('.header-dynamic');
+            const userToken = localStorage.getItem('token');
+
+            if (userToken) {
+                // 用户登录后显示的内容
+                dynamicHeader.innerHTML = `
+                    <a href="/try-account" class="button-like">Account</a>
+                    <a href="/Help_Strays" class="button-like">Help Strays</a>
+                `;
+            } else {
+                // 用户未登录显示的内容
+                dynamicHeader.innerHTML = `
+                    <a href="/login" class="button-like">Sign in</a>
+                `;
+            }
+        });
+    </script>
+</body>
+</html>
